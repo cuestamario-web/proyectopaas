@@ -4,7 +4,12 @@ WORKDIR /app
 
 COPY target/store-api-1.0-jar-with-dependencies.jar app.jar
 
-COPY data data
+# Crear carpeta data
+RUN mkdir -p data
+
+# Crear archivos vacíos
+RUN touch data/usuarios.txt
+RUN touch data/productos.txt
 
 EXPOSE 4567
 
