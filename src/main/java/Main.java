@@ -21,6 +21,17 @@ public class Main {
             res.type("application/json");
         });
 
+        exception(Exception.class, (e, req, res) -> {
+
+            System.out.println("ERROR DETECTADO:");
+
+            e.printStackTrace();
+
+            res.status(500);
+
+            res.body(gson.toJson("Error interno"));
+        });
+
         get("/health", (req, res) -> {
             return gson.toJson("API funcionando");
         });
